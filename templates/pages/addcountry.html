@@ -1,0 +1,60 @@
+{% extends "layouts/base.html" %}
+
+{% block main_content %}
+<div class="card col-lg-6" style="position: relative;margin:auto">
+<div class="card-body">
+    {% if error %}
+        {{error}}
+    {% endif %}
+    <form action="/country" method="POST" class="frm">
+        <h3 class="form_header">
+            Add New country
+        </h3>
+        <label>Country</label>
+        <input type="text" name="country"   class="form-control" />
+        <br />
+        <label>ISO Name</label>
+        <input type="text" class="form-control" name="isoname" />
+        <label>&nbsp;</label>
+        <br />
+        <button type="submit" class="btn btn-primary">Add Country</button>
+    </form>
+</div>
+</div>
+<br /><br />
+
+<br />
+
+{% if data %}
+<div class="card col-lg-12" style="position: relative;margin-top: 50px;">
+<br />
+List of Countries
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>N0.#</th>
+            <th>Country Name</th>
+            <th>Iso Code</th>
+        </tr>
+    </thead>
+    <tbody>
+
+  
+    {% for country in data %}
+        <tr>
+            <td>
+                {{country[0]}}
+            </td>
+            <td>
+                {{country[1]}}
+            </td>
+            <td>
+                {{country[2]}}
+            </td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+{% endif %}
+{% endblock %}
