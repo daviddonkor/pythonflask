@@ -86,13 +86,21 @@ def generateresults():
     errors=None
     indicators=[]
     countries = []
-    print (request.form)
-    for ind in request.form['indicator']:
+   
+    for ind in request.form.getlist('indicator'):
         indicators.append(ind)
 
-    for cnt in request.form['country']:
+    for cnt in request.form.getlist('country'):
         countries.append(cnt)
-    #data = wb.download(indicator=indicators,country=countries,start=1990,end=2020)
+    
+    start= request.form['startyear']
+    end= request.form['endyear']
+    
+    try:
 
-
-    return render_template('/pages/results.html',countries=countries,indicators=indicators)
+        data = wb.download(indicator=indicators,country=countries,start=2000,end=2015).dropna()
+        return render_template('/pages/results.html',countries=countries,indicators=indicators,errors=errors)
+    except:
+        errors="No data came in"
+ 
+    return render_template('/pages/results.html',countries=countries,indicators=indicators,errors=errors)

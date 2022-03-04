@@ -2,7 +2,10 @@
 
 {% block main_content %}
 <div class="card-body">
-   {{indicators}}
+    {% if errors %}
+    <h3>No Data came from the worldbank servers</h3>
+    {% endif %}
+    {{indicators}}
 </div>
 
 {% endblock %}
