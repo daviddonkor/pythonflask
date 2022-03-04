@@ -1,3 +1,4 @@
+* 10c1307 : Added the git log
 * 6623a6a : Time was beating me
 * c2d2408 : downloaded data from worldbank
 * ad86871 : First Commit
