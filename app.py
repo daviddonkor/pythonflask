@@ -88,10 +88,10 @@ def generateresults():
     countries = []
    
     for ind in request.form.getlist('indicator'):
-        indicators.append(ind)
+        indicators.append("'"+ind+"'")
 
     for cnt in request.form.getlist('country'):
-        countries.append(cnt)
+        countries.append("'"+cnt+"'")
     
     start= request.form['startyear']
     end= request.form['endyear']
